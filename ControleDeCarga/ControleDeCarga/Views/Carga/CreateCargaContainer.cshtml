@@ -1,0 +1,148 @@
+﻿@model ControleDeCarga.Models.CargaContainer
+
+@{
+    ViewBag.Title = "Criar Nova Carga Container";
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#btnMais").click(function (event) {
+                event.preventDefault();
+                $("#TableContainer").append(
+                        "<tr>" +
+                            "<td><input type=\"Text\" id=\"TipoContainer\" name=\"TipoContainer\" class=\"inputSmall\"/></td>" +
+                            "<td><input type=\"Text\" id=\"Container\" name=\"Container\" /></td>" +
+                        "</tr>"
+                    );
+            });
+        });
+    </script>
+
+}
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="form-horizontal">
+            <div class="row">
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true)
+
+                <div class="col-lg-4">
+                    @Html.HiddenFor(model => model.CriadoPorUser)
+                    @Html.HiddenFor(model => model.ModificadoPorUser)
+                    @Html.HiddenFor(model => model.CriadoPorUserId)
+                    @Html.HiddenFor(model => model.CriadoEm)
+                    @Html.HiddenFor(model => model.ModificadoPorUserId)
+                    @Html.HiddenFor(model => model.ModificadoEm)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImportadorId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("ImportadorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ImportadorId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ExportadorId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("ExportadorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ExportadorId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DTA, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.DTA)
+                            @Html.ValidationMessageFor(model => model.DTA)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DI_DSI, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.DI_DSI)
+                            @Html.ValidationMessageFor(model => model.DI_DSI)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MercadoriaId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("MercadoriaId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.MercadoriaId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FilialId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("FilialId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.FilialId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LocalDeEntregaId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("LocalDeEntregaId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.LocalDeEntregaId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PortoSecoId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("PortoSecoId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.PortoSecoId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LocalDeDevolucaoId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("LocalDeDevolucaoId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.LocalDeDevolucaoId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NavioId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("NavioId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.NavioId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ArmadorId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("ArmadorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ArmadorId)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <button id="btnMais" class="btn btn-default  btn-block" >Incluir container</button>
+                        <table id="TableContainer" class="containerTable">
+                            <tr>                   
+                                <th>Tipo</th>             
+                                <th>Container</th>
+                            </tr>
+                            <tr>
+                                <td>@Html.TextBox("TipoContainer", null, new {@class = "inputSmall"} )</td>
+                                <td>@Html.TextBox("Container")</td>                                
+                            </tr>
+                        </table>                        
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-5 col-lg-7">
+                <div>
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+

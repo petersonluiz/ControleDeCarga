@@ -1,0 +1,62 @@
+﻿@model ControleDeCarga.Models.HistoricoCarga
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.CargaId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EventoId, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownList("EventoId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.EventoId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Data, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Data)
+                    @Html.ValidationMessageFor(model => model.Data)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MotoristaId, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownList("MotoristaId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.MotoristaId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.VeiculoId, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownList("VeiculoId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.VeiculoId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Observacoes, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Observacoes)
+                    @Html.ValidationMessageFor(model => model.Observacoes)
+                </div>
+            </div>
+
+            @Html.Hidden("telaAnterior", (string)ViewBag.Tela)
+            <div class="col-sm-8 col-sm-offset-2">
+                <button id="DialogCancel" class="btn btn-default">Cancelar</button>
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>      
+
+        </div>
+    }
+</div>

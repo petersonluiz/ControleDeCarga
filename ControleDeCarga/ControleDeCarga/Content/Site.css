@@ -1,0 +1,98 @@
+﻿body {
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    font-size:smaller;
+    max-width: 280px;
+}
+
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.PageTitle {
+    font-weight: bold;
+    font-size: medium;
+    color: white;
+}
+
+.PageTitle p {
+    font-weight: bold;
+    font-size: medium;
+    color: white;
+    margin: 0 0 0px;
+}
+
+
+.DivHistorico{
+    background-color: #fbf5ec;
+}
+
+.SubTitulo{
+    font-weight: 800;
+}
+
+.table th{
+    color: white;
+    background:  #2a6496;
+}
+
+input[#filtro]{
+    width: 500px;
+}
+
+.label-filter {
+  padding-top: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: small;
+}
+
+.containerTable{
+
+}
+.containerTable th{
+    font-size: smaller;
+}
+
+.inputSmall{
+    width: 40px;
+}
+
+/*.field-Search{
+    margin: 1px 1px 1px 1px;
+    
+}*/

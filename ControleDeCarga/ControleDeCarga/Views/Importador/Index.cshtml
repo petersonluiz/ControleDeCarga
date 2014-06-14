@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ControleDeCarga.Models.Importador>
+
+@{
+    ViewBag.Title = "Importadores";
+}
+@section Scripts {
+     <script type="text/javascript">
+        StyleGridButtons();        
+     </script>
+}
+<hr/>
+<div class="container">
+<p>
+    @Html.ActionLink("Criar novo", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+                        <td>
+                    @Html.ActionLink("Editar", "Edit", new { id=item.Id }, new { data_edit = true }) 
+                    @Html.ActionLink("Detalhes", "Details", new { id=item.Id }, new { data_detail = true }) 
+                    @Html.ActionLink("Excluir", "Delete", new { id=item.Id }, new { data_delete = true })
+                </td>
+                <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNPJ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+    </tr>
+}
+
+</table>
+</div>

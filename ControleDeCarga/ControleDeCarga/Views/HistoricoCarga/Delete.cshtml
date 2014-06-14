@@ -1,0 +1,23 @@
+﻿@model ControleDeCarga.Models.HistoricoCarga
+
+@{
+    ViewBag.Title = "Confirmação de Exclusão";
+}
+<br/>
+
+<div class="container">
+    <p class="text-danger">Tem certeza que deseja excluir o evento "@Model.Evento.Nome.ToLower()" ?</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.Hidden("telaAnterior", (string)ViewBag.Tela)
+        <div class="col-sm-8 col-sm-offset-2">
+            <button id="DelDialogCancel" class="btn btn-default">Cancelar</button>
+            <input type="submit" value="Excluir" class="btn btn-primary" /> 
+        </div>       
+    }
+
+</div>

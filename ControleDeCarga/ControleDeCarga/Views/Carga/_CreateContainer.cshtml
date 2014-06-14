@@ -1,0 +1,47 @@
+﻿@model ControleDeCarga.Models.Container
+
+<hr />
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true)
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CargaContainerId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("CargaContainerId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.CargaContainerId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TipoContainer, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.TipoContainer)
+                            @Html.ValidationMessageFor(model => model.TipoContainer)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Identificador, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.Identificador)
+                            @Html.ValidationMessageFor(model => model.Identificador)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col-lg-offset-5 col-lg-12">
+                <div>
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>*@		
+    }
+</div>

@@ -1,0 +1,87 @@
+﻿@model ControleDeCarga.Models.Filial
+
+@{
+    ViewBag.Title = "Excluir Filial";
+}
+
+<hr/>
+<div class="container">    
+    <p class="text-center label-warning"> <strong>Tem certeza que deseja excluir?</strong></p>    
+    <div class="row">
+     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Uf.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uf.Sigla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contato)
+        </dd>
+
+    </dl>
+</div>
+<div class="row">
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+            <div class="col-lg-offset-5 col-lg-6">
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Excluir" class="btn btn-primary" />
+            </div>
+    }
+</div>
+</div>

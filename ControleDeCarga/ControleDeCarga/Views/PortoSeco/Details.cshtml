@@ -1,0 +1,36 @@
+﻿@model ControleDeCarga.Models.PortoSeco
+
+@{
+    ViewBag.Title = "Detalhes do Porto Seco";
+}
+
+
+    	<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Uf.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uf.Sigla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        @Html.Partial("_EntityModificationControl")
+    </dl>
+</div>
+</div>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

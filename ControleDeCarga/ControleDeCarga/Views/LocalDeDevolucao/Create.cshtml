@@ -1,0 +1,41 @@
+﻿@model ControleDeCarga.Models.LocalDeDevolucao
+
+@{
+    ViewBag.Title = "Criar Novo Local de Devolução" ;
+}
+<hr/>
+<div class="container">
+	@using (Html.BeginForm()) 
+	{
+		@Html.AntiForgeryToken()
+    
+		<div class="form-horizontal">			
+			@Html.ValidationSummary(true)
+			<div class="row">
+				<div class="col-lg-5">
+								@Html.HiddenFor(model => model.CriadoPorUser)
+								@Html.HiddenFor(model => model.ModificadoPorUser)
+								<div class="form-group">
+									@Html.LabelFor(model => model.Nome, new { @class = "control-label col-lg-4" })
+									<div class="col-lg-8">
+										@Html.EditorFor(model => model.Nome)
+										@Html.ValidationMessageFor(model => model.Nome)
+						</div>
+					</div>
+								@Html.HiddenFor(model => model.CriadoPorUserId)
+								@Html.HiddenFor(model => model.CriadoEm)
+								@Html.HiddenFor(model => model.ModificadoPorUserId)
+								@Html.HiddenFor(model => model.ModificadoEm)
+				
+				</div>			
+			</div>
+		</div>
+		<div class="row">
+		<div class="col-lg-offset-5 col-lg-12">
+			<div>
+				@Html.ActionLink("Voltar", "Index",  null, new { @class = "btn btn-default" })
+				<input type="submit" value="Criar" class="btn btn-primary" />
+			</div>
+		</div>
+	</div>		}
+</div>

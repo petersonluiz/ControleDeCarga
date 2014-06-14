@@ -1,0 +1,39 @@
+﻿@model ControleDeCarga.Models.Navio
+
+@{
+    ViewBag.Title = "Excluir Navio";
+}
+
+<hr/>
+<div class="container">    
+    <p class="text-center label-warning"> <strong>Tem certeza que deseja excluir?</strong></p>    
+    <div class="row">
+     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+    </dl>
+</div>
+<div class="row">
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+            <div class="col-lg-offset-5 col-lg-6">
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Excluir" class="btn btn-primary" />
+            </div>
+    }
+</div>
+</div>

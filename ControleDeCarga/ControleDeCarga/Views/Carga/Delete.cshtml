@@ -1,0 +1,175 @@
+﻿@model ControleDeCarga.Models.Carga
+
+@{
+    ViewBag.Title = "Delete";
+}
+<hr/>
+<div class="container">    
+    <p class="text-center label-warning"> <strong>Tem certeza que deseja excluir esta carga?</strong></p>    
+    <div class="row">
+        <div class="col-lg-5">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Exportador.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Exportador.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Importador.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Filial.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Filial.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Importador.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DTA)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DTA)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DI_DSI)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DI_DSI)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Mercadoria.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Mercadoria.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Quantidade)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Quantidade)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LocalDeEntrega.Cidade)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LocalDeEntrega.Cidade)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Especie.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Especie.Nome)
+                </dd>
+
+                @if (Model.Especie.Nome == "Container")
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LocalDeDevolucao.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LocalDeDevolucao.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TipoContainer)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TipoContainer)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Navio.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Navio.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PortoSeco.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PortoSeco.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Armador.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Armador.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Container)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Container)
+                    </dd>
+                }
+                <dt>
+                    @Html.DisplayName("Criado Por")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CriadoPorUser.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CriadoEm)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CriadoEm)
+                </dd>
+
+                <dt>
+                    @Html.DisplayName("Modificado Por")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ModificadoPorUser.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModificadoEm)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ModificadoEm)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StatusCarga.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StatusCarga.Status)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-lg-offset-5 col-lg-6">
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Excluir" class="btn btn-primary" />
+            </div>            
+        }
+    </div>
+</div>

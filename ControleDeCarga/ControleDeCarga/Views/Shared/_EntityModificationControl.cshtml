@@ -1,0 +1,31 @@
+﻿@model ControleDeCarga.Models.ModificationControlledModel
+
+<dt>
+    @Html.DisplayName("Criado Por")
+</dt>
+<dd>
+    @Html.DisplayFor(model => model.CriadoPorUser.UserName)
+</dd>
+<dt>
+    @Html.DisplayNameFor(model => model.CriadoEm)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.CriadoEm)
+</dd>
+
+<dt>
+    @Html.DisplayName("Modificado Por")
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.ModificadoPorUser.UserName)
+</dd>
+
+<dt>
+    @Html.DisplayNameFor(model => model.ModificadoEm)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.ModificadoEm)
+</dd>

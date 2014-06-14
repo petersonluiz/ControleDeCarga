@@ -1,0 +1,39 @@
+﻿@model ControleDeCarga.Models.LocalDeEntrega
+
+@{
+    ViewBag.Title = "Excluir Local de Entrega";
+}
+
+<hr/>
+<div class="container">    
+    <p class="text-center label-warning"> <strong>Tem certeza que deseja excluir?</strong></p>    
+    <div class="row">
+     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Uf.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uf.Sigla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+    </dl>
+</div>
+<div class="row">
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+            <div class="col-lg-offset-5 col-lg-6">
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Excluir" class="btn btn-primary" />
+            </div>
+    }
+</div>
+</div>

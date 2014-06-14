@@ -1,0 +1,36 @@
+﻿@model ControleDeCarga.Models.Motorista
+
+@{
+    ViewBag.Title = "Detalhes do Motorista";
+}
+
+
+    	<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        @Html.Partial("_EntityModificationControl")
+    </dl>
+</div>
+</div>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

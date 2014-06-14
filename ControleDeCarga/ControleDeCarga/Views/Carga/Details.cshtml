@@ -1,0 +1,248 @@
+﻿@model ControleDeCarga.Models.Carga
+
+@{
+    ViewBag.Title = "Detalhes da Carga";
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#DivEventos").dialog({
+                width: 400,
+                autoOpen: false,
+                show: {
+                    effect: "fade",
+                    duration: 300
+                },
+                hide: {
+                    effect: "fade",
+                    duration: 300
+                }
+            }).css("font-size", "smaller");
+
+            $("#DivDelEventos").dialog({
+                width: 400,
+                height: 200,
+                autoOpen: false,
+                show: {
+                    effect: "fade",
+                    duration: 300
+                },
+                hide: {
+                    effect: "fade",
+                    duration: 300
+                }
+            }).css("font-size", "smaller");
+
+            //seta o link de eventos para abrir o dialog
+            $("a[data-edit]").click(function () {
+                $("#DivEventos").dialog("open");
+            });
+
+            //seta o link de eventos para abrir o dialog
+            $("a[data-delete=True]").click(function () {
+                $("#DivDelEventos").dialog("open");
+            });
+
+            StyleGridButtons();           
+        });
+
+        function PrepareDialog() {
+            SetDateTimePicker();
+
+            $("#DialogCancel").click(function (event) {
+                event.preventDefault();
+                $("#DivEventos").dialog("close");
+            });
+
+            $("#DelDialogCancel").click(function (event) {
+                event.preventDefault();
+                $("#DivDelEventos").dialog("close");
+            });
+        }
+
+    </script>
+
+}
+<hr/>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Exportador.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Exportador.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Importador.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Filial.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Filial.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Importador.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DTA)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DTA)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DI_DSI)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DI_DSI)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Mercadoria.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Mercadoria.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Quantidade)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Quantidade)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LocalDeEntrega.Cidade)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.LocalDeEntrega.Cidade)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Especie.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Especie.Nome)
+                </dd>
+
+                @if (Model.Especie.Nome == "Container")
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LocalDeDevolucao.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.LocalDeDevolucao.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TipoContainer)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TipoContainer)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Navio.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Navio.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PortoSeco.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PortoSeco.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Armador.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Armador.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Container)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Container)
+                    </dd>
+                }
+                <dt>
+                    @Html.DisplayName("Criado Por")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CriadoPorUser.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CriadoEm)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CriadoEm)
+                </dd>
+
+                <dt>
+                    @Html.DisplayName("Modificado Por")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ModificadoPorUser.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModificadoEm)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ModificadoEm)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StatusCarga.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StatusCarga.Status)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="col-lg-8">
+
+            @Html.Partial("_ListHistorico", Model.HistoricoCarga, new ViewDataDictionary { { "Tela", "Details" } })
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <p>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Voltar", "Index")
+            </p>
+        </div>
+    </div>
+</div>
+
+<div style="width: 500px" id="DivEventos" title="Editar Evento">
+    <img id="LoadingImg" src="~/Images/ajax-loader.gif" style="display:none" />
+</div>
+
+<div id="DivDelEventos" title="Confirmação de Exclusão">
+    <img id="LoadingImg2" src="~/Images/ajax-loader.gif" style="display:none" />
+</div>

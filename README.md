@@ -1,4 +1,0 @@
-ControleDeCarga
-===============
-
-Controle de Carga

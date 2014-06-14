@@ -1,0 +1,110 @@
+﻿@model ControleDeCarga.Models.Carga
+
+@{
+    ViewBag.Title = "Criar Nova Carga";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $("#EspecieId").change(function () {
+            if ($(this).val() != "2")
+                $("div[data-container=true]").hide("fast");
+            else
+                $("div[data-container=true]").show("fast");
+        })
+    </script>
+}
+<hr/>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true)
+
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImportadorId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("ImportadorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ImportadorId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ExportadorId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("ExportadorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ExportadorId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FilialId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("FilialId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.FilialId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DTA, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.DTA)
+                            @Html.ValidationMessageFor(model => model.DTA)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DI_DSI, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.DI_DSI)
+                            @Html.ValidationMessageFor(model => model.DI_DSI)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MercadoriaId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("MercadoriaId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.MercadoriaId)
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LocalDeEntregaId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("LocalDeEntregaId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.LocalDeEntregaId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EspecieId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("EspecieId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.EspecieId)
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5 col-lg-pull-1">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-offset-5 col-lg-12">
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>

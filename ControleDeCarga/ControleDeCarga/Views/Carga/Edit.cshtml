@@ -1,0 +1,245 @@
+﻿@model ControleDeCarga.Models.Carga
+
+@{
+    ViewBag.Title = "Editar Carga";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $("#EspecieId").change(function () {
+            if ($(this).val() != "2")
+                $("div[data-container=true]").hide("fast");
+            else
+                $("div[data-container=true]").show("fast");
+        })
+
+        $(function () {
+            $("#DivEventos").dialog({
+                width: 400,
+                autoOpen: false,
+                show: {
+                    effect: "fade",
+                    duration: 300
+                },
+                hide: {
+                    effect: "fade",
+                    duration: 300
+                }
+            }).css("font-size", "smaller");
+
+            $("#DivDelEventos").dialog({
+                width: 400,
+                height: 200,
+                autoOpen: false,
+                show: {
+                    effect: "fade",
+                    duration: 300
+                },
+                hide: {
+                    effect: "fade",
+                    duration: 300
+                }
+            }).css("font-size", "smaller");
+
+            //seta o link de eventos para abrir o dialog
+            $("a[data-edit]").click(function () {
+                $("#DivEventos").dialog("open");
+            });
+
+            //seta o link de eventos para abrir o dialog
+            $("a[data-delete=True]").click(function () {
+                $("#DivDelEventos").dialog("open");
+            });
+
+            $("#ButtonCancel").click(function (event) {
+                event.preventDefault();
+                location.href = "Carga\Index";
+            });
+
+            StyleGridButtons();
+        });
+
+        function PrepareDialog() {
+            SetDateTimePicker();
+
+            $("#DialogCancel").click(function (event) {
+                event.preventDefault();
+                $("#DivEventos").dialog("close");
+            });
+
+            $("#DelDialogCancel").click(function (event) {
+                event.preventDefault();
+                $("#DivDelEventos").dialog("close");
+            });
+        }
+    </script>
+}
+
+<hr/>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.CriadoPorUserId)
+                @Html.HiddenFor(model => model.CriadoEm)
+                @Html.HiddenFor(model => model.ModificadoPorUserId)
+                @Html.HiddenFor(model => model.ModificadoEm)
+                @Html.HiddenFor(model => model.StatusCargaId)
+
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImportadorId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("ImportadorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ImportadorId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ExportadorId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("ExportadorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ExportadorId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FilialId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("FilialId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.FilialId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DTA, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.DTA)
+                            @Html.ValidationMessageFor(model => model.DTA)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DI_DSI, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.DI_DSI)
+                            @Html.ValidationMessageFor(model => model.DI_DSI)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MercadoriaId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("MercadoriaId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.MercadoriaId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Quantidade, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.EditorFor(model => model.Quantidade)
+                            @Html.ValidationMessageFor(model => model.Quantidade)
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-container=true>
+                        @Html.LabelFor(model => model.LocalDeEntregaId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("LocalDeEntregaId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.LocalDeEntregaId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EspecieId, new { @class = "control-label col-lg-4" })
+                        <div class="col-lg-8">
+                            @Html.DropDownList("EspecieId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.EspecieId)
+                        </div>
+                    </div>
+
+                    @if (@Model.Especie.Nome == "Container")
+                    {
+
+                        <div class="form-group" data-container=true>
+                            @Html.LabelFor(model => model.PortoSecoId, new { @class = "control-label col-lg-4" })
+                            <div class="col-lg-8">
+                                @Html.DropDownList("PortoSecoId", String.Empty)
+                                @Html.ValidationMessageFor(model => model.PortoSecoId)
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-container=true>
+                            @Html.LabelFor(model => model.TipoContainer, new { @class = "control-label col-lg-4" })
+                            <div class="col-lg-8">
+                                @Html.EditorFor(model => model.TipoContainer)
+                                @Html.ValidationMessageFor(model => model.TipoContainer)
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-container=true>
+                            @Html.LabelFor(model => model.Container, new { @class = "control-label col-lg-4" })
+                            <div class="col-lg-8">
+                                @Html.EditorFor(model => model.Container)
+                                @Html.ValidationMessageFor(model => model.Container)
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-container=true>
+                            @Html.LabelFor(model => model.LocalDeDevolucaoId, new { @class = "control-label col-lg-4" })
+                            <div class="col-lg-8">
+                                @Html.DropDownList("LocalDeDevolucaoId", String.Empty)
+                                @Html.ValidationMessageFor(model => model.LocalDeDevolucaoId)
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-container=true>
+                            @Html.LabelFor(model => model.NavioId, new { @class = "control-label col-lg-4" })
+                            <div class="col-lg-8">
+                                @Html.DropDownList("NavioId", String.Empty)
+                                @Html.ValidationMessageFor(model => model.NavioId)
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-container=true>
+                            @Html.LabelFor(model => model.ArmadorId, new { @class = "control-label col-lg-4" })
+                            <div class="col-lg-8">
+                                @Html.DropDownList("ArmadorId", String.Empty)
+                                @Html.ValidationMessageFor(model => model.ArmadorId)
+                            </div>
+                        </div>
+
+
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                @Html.Partial("_ListHistorico", Model.HistoricoCarga, new ViewDataDictionary{ {"Tela", "Edit"} })
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-offset-5 col-lg-6">
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div style="width: 500px" id="DivEventos" title="Editar Evento">
+    <img id="LoadingImg" src="~/Images/ajax-loader.gif" style="display:none" />
+</div>
+
+<div id="DivDelEventos" title="Confirmação de Exclusão">
+    <img id="LoadingImg2" src="~/Images/ajax-loader.gif" style="display:none" />
+</div>
