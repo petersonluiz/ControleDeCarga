@@ -33,7 +33,7 @@
                     effect: "fade",
                     duration: 300
                 }
-            }).css("font-size", "smaller");
+            }).css("font-size", "smaller").css("overflow","hidden");
 
             //seta o link de eventos para abrir o dialog
             $("a[data-ajax]").click(function () {
@@ -73,7 +73,9 @@
                                 </div>
                             </div>
                             <div class="col-md-2 ">
-                                <input type="submit" value="Filtrar" class="btn btn-default" />
+                                <button type="submit" value="Filtrar" class="btn btn-default">
+                                    Procurar <span class="glyphicon glyphicon-search"></span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -84,7 +86,7 @@
     <div class="row">        
         <div id="DivCargas" class="col-lg-12 table-responsive">
             <p>
-                @Html.ActionLink("Nova Carga Simples", "CreateCargaSimples") | @Html.ActionLink("Nova Carga Container", "CreateCargaContainer")
+                @Html.ActionLink("Nova Carga Simples", "CreateCargaSimples")| @Html.ActionLink("Nova Carga Container", "CreateCargaContainer")
             </p>
             <img id="LoadingImgFilter" class="text-center" src="~/Images/ajax-loader.gif" style="display:none" />
             @Html.Partial("_List")
@@ -92,9 +94,9 @@
     </div>
 </div>
 <div style="width: 500px" id="DivEventos" title="Adicionar Evento">
-    <div class="container">
-        <img id="LoadingImg" class="text-center" src="~/Images/ajax-loader.gif" style="display:none" />
-    </div>
+   
+        <img id="LoadingImg" class="text-center"  src="~/Images/ajax-loader.gif" style="display:none" />
+   
 </div>
 
 

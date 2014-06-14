@@ -118,24 +118,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2">
-                    <div class="panel panel-default">
+                <div class="col-lg-3">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">Containeres</div>
-                        <div class="panel-body">
-                            <button id="btnMais" class="btn btn-default  btn-block">Incluir container</button>
-                            <table id="TableContainer" class="containerTable">
-                                <tr>
-                                    <th>Tipo</th>
-                                    <th>Container</th>
-                                </tr>
-                                <tr>
-                                    <td>@Html.TextBox("TipoContainer", null, new { @class = "inputSmall" })</td>
-                                    <td>@Html.TextBox("Container")</td>
-                                </tr>
-                            </table>   
-                        </div>
+                            <div class="panel-body">                                
+                                <table id="TableContainer" class="containerTable">
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Container</th>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.TextBox("TipoContainer", null, new { @class = "inputSmall" })</td>
+                                        <td>@Html.TextBox("Container")</td>
+                                    </tr>
+                                </table>
+                                <button id="btnMais" class="btn btn-default glyphicon-plus "></button>
+                            </div>
                     </div>
-                                         
+
                 </div>
             </div>
         </div>
