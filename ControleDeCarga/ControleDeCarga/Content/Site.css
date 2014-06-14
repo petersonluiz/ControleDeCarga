@@ -70,9 +70,6 @@ input[type="checkbox"].input-validation-error {
     background:  #2a6496;
 }
 
-input[#filtro]{
-    width: 500px;
-}
 
 .label-filter {
   padding-top: 5px;
@@ -96,3 +93,28 @@ input[#filtro]{
     margin: 1px 1px 1px 1px;
     
 }*/
+
+
+.navbar-brand {
+  position:absolute;
+  left: 5px;
+  top: 0px;
+  margin-left: -15px;
+}
+
+.navbar-inverse {
+  background-color: #b94a48;
+  border-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+  font-weight: bold
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #5bb0d0;
+  font-weight: bold;
+  background-color: transparent;
+}
