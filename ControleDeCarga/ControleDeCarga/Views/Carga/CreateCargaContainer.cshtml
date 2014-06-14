@@ -119,17 +119,23 @@
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <button id="btnMais" class="btn btn-default  btn-block" >Incluir container</button>
-                        <table id="TableContainer" class="containerTable">
-                            <tr>                   
-                                <th>Tipo</th>             
-                                <th>Container</th>
-                            </tr>
-                            <tr>
-                                <td>@Html.TextBox("TipoContainer", null, new {@class = "inputSmall"} )</td>
-                                <td>@Html.TextBox("Container")</td>                                
-                            </tr>
-                        </table>                        
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Containeres</div>
+                        <div class="panel-body">
+                            <button id="btnMais" class="btn btn-default  btn-block">Incluir container</button>
+                            <table id="TableContainer" class="containerTable">
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Container</th>
+                                </tr>
+                                <tr>
+                                    <td>@Html.TextBox("TipoContainer", null, new { @class = "inputSmall" })</td>
+                                    <td>@Html.TextBox("Container")</td>
+                                </tr>
+                            </table>   
+                        </div>
+                    </div>
+                                         
                 </div>
             </div>
         </div>
